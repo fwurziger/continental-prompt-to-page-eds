@@ -52,7 +52,8 @@
   text-shadow: 0 1px 12px rgb(0 0 0 / 35%);
 }
 
-.hero p.button-container {
+.hero p.button-wrapper {
+  max-width: none;
   margin-top: 28px;
 }
 

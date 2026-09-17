@@ -2,9 +2,10 @@
 header .nav-wrapper {
   background-color: var(--background-color);
   width: 100%;
-  z-index: 2;
+  z-index: 10;
   position: fixed;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 6%);
 }
 
 header nav {
@@ -14,11 +15,11 @@ header nav {
     'hamburger brand tools' var(--nav-height)
     'sections sections sections' 1fr / auto 1fr auto;
   align-items: center;
-  gap: 0 24px;
+  gap: 0 20px;
   margin: auto;
-  max-width: 1248px;
+  max-width: 1440px;
   height: var(--nav-height);
-  padding: 0 24px;
+  padding: 0 20px;
   font-family: var(--body-font-family);
 }
 
@@ -38,10 +39,10 @@ header nav[aria-expanded='true'] {
 
   header nav {
     display: flex;
-    justify-content: space-between;
-    gap: 0 32px;
-    max-width: 1264px;
-    padding: 0 32px;
+    justify-content: flex-start;
+    gap: 0;
+    max-width: 1440px;
+    padding: 0 40px;
   }
 
   header nav[aria-expanded='true'] {
@@ -69,7 +70,7 @@ header nav .nav-hamburger button {
   border: 0;
   border-radius: 0;
   padding: 0;
-  background-color: var(--background-color);
+  background-color: transparent;
   color: inherit;
   overflow: initial;
   text-overflow: initial;
@@ -139,9 +140,7 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
 /* brand */
 header .nav-brand {
   grid-area: brand;
-  flex-basis: 128px;
-  font-size: var(--heading-font-size-s);
-  font-weight: 700;
+  flex: 0 0 auto;
   line-height: 1;
 }
 
@@ -151,22 +150,12 @@ header .nav-brand a {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 150px;
+  width: 172px;
   min-height: var(--nav-height);
-  padding: 8px 16px;
+  padding: 14px 18px;
   background: var(--continental-yellow);
   color: #050505;
-  font-family: Georgia, serif;
-  font-size: 23px;
   text-decoration: none;
-}
-
-header .nav-brand a::after {
-  content: 'The Future in Motion';
-  margin-top: 3px;
-  font-family: Arial, sans-serif;
-  font-size: 8px;
-  font-weight: 400;
 }
 
 header nav a:any-link {
@@ -174,7 +163,8 @@ header nav a:any-link {
 }
 
 header nav .nav-brand img {
-  width: 128px;
+  width: 100%;
+  max-width: 174px;
   height: auto;
 }
 
@@ -195,11 +185,11 @@ header nav[aria-expanded='true'] .nav-sections {
 header nav .nav-sections ul {
   list-style: none;
   padding-left: 0;
-  font-size: var(--body-font-size-s);
+  font-size: 15px;
 }
 
 header nav .nav-sections ul > li {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 header nav .nav-sections ul > li > ul {
@@ -215,6 +205,7 @@ header nav .nav-sections ul > li > ul > li {
     display: block;
     visibility: visible;
     white-space: nowrap;
+    height: 100%;
   }
 
   header nav[aria-expanded='true'] .nav-sections {
@@ -249,13 +240,48 @@ header nav .nav-sections ul > li > ul > li {
 
   header nav .nav-sections ul {
     display: flex;
-    gap: 24px;
+    align-items: stretch;
+    gap: 0;
     margin: 0;
+    height: 100%;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li {
+    display: flex;
+    align-items: center;
     flex: 0 1 auto;
     position: relative;
+    padding: 0 18px;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > a::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: var(--continental-yellow);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 180ms ease;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > a:hover {
+    color: currentcolor;
+    text-decoration: none;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > a:hover::after,
+  header nav .nav-sections .default-content-wrapper > ul > li:first-child > a::after {
+    transform: scaleX(1);
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul {
@@ -294,4 +320,63 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-left: auto;
+  font-size: 13px;
+}
+
+header nav .nav-tools .default-content-wrapper p {
+  display: flex;
+  align-items: center;
+}
+
+header .nav-utilities {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #555;
+}
+
+header .nav-market {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+header .nav-market span {
+  font-size: 8px;
+}
+
+header .nav-language {
+  border-left: 1px solid #ddd;
+  padding-left: 16px;
+  font-weight: 700;
+}
+
+@media (width < 900px) {
+  header .nav-brand a {
+    width: 138px;
+    padding: 12px 14px;
+  }
+
+  header nav[aria-expanded='true'] {
+    background: var(--background-color);
+  }
+
+  header nav[aria-expanded='true'] .nav-sections {
+    border-top: 1px solid #ddd;
+    padding: 24px 0;
+  }
+
+  header nav[aria-expanded='true'] .nav-sections ul > li {
+    border-bottom: 1px solid #eee;
+    padding: 12px 0;
+    font-size: 18px;
+  }
+
+  header .nav-utilities {
+    display: none;
+  }
 }

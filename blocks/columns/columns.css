@@ -5,6 +5,8 @@
 
 .columns img {
   width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
 }
 
 .columns > div > div {
@@ -17,17 +19,23 @@
 
 .columns > div > .columns-img-col img {
   display: block;
+  box-shadow: 14px 14px 0 var(--continental-yellow);
 }
 
 @media (width >= 900px) {
   .columns > div {
     align-items: center;
     flex-direction: unset;
-    gap: 24px;
+    gap: 64px;
   }
 
   .columns > div > div {
     flex: 1;
     order: unset;
+  }
+
+  .columns h2 {
+    margin-top: 0;
+    font-size: 42px;
   }
 }

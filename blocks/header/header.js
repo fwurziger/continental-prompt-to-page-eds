@@ -135,6 +135,13 @@ export default async function decorate(block) {
   if (brandLink) {
     brandLink.className = '';
     brandLink.closest('.button-container').className = '';
+    brandLink.textContent = '';
+    const logo = document.createElement('img');
+    logo.src = '/icons/continental-logo.svg';
+    logo.alt = 'Continental';
+    logo.width = 174;
+    logo.height = 32;
+    brandLink.append(logo);
   }
 
   const navSections = nav.querySelector('.nav-sections');
@@ -149,6 +156,19 @@ export default async function decorate(block) {
         }
       });
     });
+  }
+
+  const navTools = nav.querySelector('.nav-tools');
+  if (navTools) {
+    const utilities = document.createElement('div');
+    utilities.className = 'nav-utilities';
+    utilities.innerHTML = `
+      <a class="nav-market" href="https://www.continental.com/en/location-selector/" aria-label="Choose country or region">
+        <span aria-hidden="true">●</span> Global
+      </a>
+      <span class="nav-language" aria-label="Language: English">EN</span>
+    `;
+    navTools.prepend(utilities);
   }
 
   // hamburger for mobile

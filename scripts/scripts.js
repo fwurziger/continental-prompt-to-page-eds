@@ -110,6 +110,65 @@ export function decorateButtons(main) {
 }
 
 /**
+ * Groups each heading with the content that follows it so an intro section can
+ * be laid out in columns. Authored content is a flat run of headings and
+ * paragraphs, which CSS alone cannot group.
+ * @param {HTMLElement} main The main container element
+ */
+export function decorateIntroColumns(main) {
+  main.querySelectorAll('.section.intro > .default-content-wrapper').forEach((wrapper) => {
+    const groups = [];
+    [...wrapper.children].forEach((child) => {
+      if (child.tagName === 'H3') groups.push([child]);
+      else if (groups.length) groups[groups.length - 1].push(child);
+    });
+    if (groups.length < 2) return;
+
+    const grid = document.createElement('div');
+    grid.className = 'intro-columns';
+    groups.forEach((group) => {
+      const column = document.createElement('div');
+      column.className = 'intro-column';
+      group.forEach((node) => column.append(node));
+      grid.append(column);
+    });
+    wrapper.append(grid);
+  });
+}
+
+/**
+ * Turns pipe delimited paragraphs into a comparison table. Rich text authored
+ * in AEM cannot carry table markup, so rows arrive as `a | b | c` paragraphs
+ * and the first one is treated as the header.
+ * @param {HTMLElement} main The main container element
+ */
+export function decorateSpecsTable(main) {
+  main.querySelectorAll('.section.specs > .default-content-wrapper').forEach((wrapper) => {
+    const rows = [...wrapper.querySelectorAll('p')].filter((p) => p.textContent.includes('|'));
+    if (rows.length < 2) return;
+
+    const table = document.createElement('table');
+    const head = document.createElement('thead');
+    const body = document.createElement('tbody');
+    rows[0].before(table);
+    rows.forEach((paragraph, index) => {
+      const cells = paragraph.textContent.split('|').map((cell) => cell.trim());
+      const tr = document.createElement('tr');
+      cells.forEach((cell, column) => {
+        const isHeader = index === 0 || column === 0;
+        const td = document.createElement(isHeader ? 'th' : 'td');
+        if (index > 0 && column === 0) td.scope = 'row';
+        td.textContent = cell;
+        tr.append(td);
+      });
+      (index === 0 ? head : body).append(tr);
+      paragraph.remove();
+    });
+    table.append(head, body);
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -120,6 +179,8 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateButtons(main);
+  decorateIntroColumns(main);
+  decorateSpecsTable(main);
 }
 
 /**

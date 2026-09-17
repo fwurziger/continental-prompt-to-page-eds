@@ -58,8 +58,8 @@
 
 @media (width >= 900px) {
   :root {
-    --nav-meta-height: 84px;
-    --nav-main-height: 49px;
+    --nav-meta-height: 58px;
+    --nav-main-height: 44px;
     --nav-height: calc(var(--nav-meta-height) + var(--nav-main-height));
 
     /* body sizes */
@@ -331,60 +331,197 @@ main .section.highlight {
   padding: 64px 0;
 }
 
-/* intro section: heading and lead text side by side */
-main > .section:nth-of-type(2) {
+/* breadcrumb trail below the hero */
+main > .section.breadcrumb {
   margin: 0;
-  padding: 64px 0;
+  padding: 18px 0 22px;
 }
 
-main > .section:nth-of-type(2) h2 {
+main > .section.breadcrumb p {
   margin: 0;
-  font-size: clamp(30px, 3.4vw, 42px);
-  letter-spacing: -0.02em;
+  color: #767676;
+  font-size: 14px;
 }
 
-main > .section:nth-of-type(2) p {
-  margin: 20px 0 0;
-  color: #444;
+main > .section.breadcrumb strong {
+  color: var(--dark-color);
+  font-weight: 500;
 }
 
-main > .section:nth-of-type(2) p:first-of-type {
+/* comparison table built from pipe delimited rows */
+main > .section.specs {
+  margin: 0;
+  padding: 48px 0 56px;
+}
+
+main > .section.specs h2 {
+  margin: 0 0 24px;
+  font-size: clamp(24px, 2.4vw, 31px);
+}
+
+main > .section.specs table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--background-color);
+}
+
+main > .section.specs thead th {
+  padding: 15px 20px;
+  background-color: var(--dark-color);
+  color: var(--background-color);
+  font-size: 15px;
+  font-weight: 500;
+  text-align: left;
+}
+
+main > .section.specs tbody th,
+main > .section.specs tbody td {
+  border-bottom: 1px solid #e6e6e6;
+  padding: 15px 20px;
+  color: #5a5a5a;
+  font-size: 16px;
+  text-align: left;
+}
+
+main > .section.specs tbody th {
   color: var(--text-color);
-  font-size: clamp(19px, 1.8vw, 23px);
-  line-height: 1.5;
+  font-weight: 500;
+}
+
+main > .section.specs tbody tr:last-child th,
+main > .section.specs tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* generated pages end on a left aligned FAQ, not a centered closing statement */
+main > .section.faq .default-content-wrapper {
+  max-width: none;
+  text-align: left;
+}
+
+main > .section.faq h2 {
+  margin: 0 0 6px;
+  font-size: clamp(24px, 2.4vw, 31px);
+}
+
+main > .section.faq h3 {
+  margin: 26px 0 0;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+main > .section.faq h3 + p {
+  max-width: 820px;
+  margin: 10px 0 0;
+  color: #5a5a5a;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* footnote under the comparison table */
+main > .section.specs > .default-content-wrapper > p {
+  margin: 16px 0 0;
+  color: #767676;
+  font-size: 14px;
+}
+
+/* intro: heading, lead paragraph, then the detail blocks in columns */
+main > .section.intro {
+  margin: 0;
+  padding: 44px 0 52px;
+  background-color: var(--light-color);
+}
+
+main > .section.intro h2 {
+  margin: 0 0 22px;
+  font-size: clamp(26px, 2.6vw, 34px);
+  letter-spacing: -0.015em;
+}
+
+main > .section.intro > .default-content-wrapper > p {
+  max-width: 900px;
+  margin: 0 0 32px;
+  color: var(--dark-color);
+  font-size: clamp(17px, 1.5vw, 19px);
+  line-height: 1.65;
+}
+
+main > .section.intro .intro-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 26px;
+  padding-bottom: 8px;
+}
+
+main > .section.intro .intro-column h3 {
+  display: inline-block;
+  margin: 0 0 12px;
+  border-bottom: 2px solid var(--continental-yellow);
+  padding-bottom: 9px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+main > .section.intro .intro-column p {
+  margin: 0 0 12px;
+  color: #5a5a5a;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+main > .section.intro .intro-column p:last-child {
+  margin-bottom: 0;
 }
 
 @media (width >= 900px) {
-  main > .section:nth-of-type(2) {
-    padding: 88px 0;
+  main > .section.intro {
+    padding: 56px 0 64px;
   }
 
-  main > .section:nth-of-type(2) .default-content-wrapper {
-    display: grid;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    column-gap: 72px;
-    align-items: start;
+  main > .section.intro .intro-columns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 34px;
   }
+}
 
-  main > .section:nth-of-type(2) h2 {
-    position: relative;
-    grid-row: 1 / span 2;
-    align-self: stretch;
-  }
+/* key takeaways box */
+main > .section.takeaway {
+  margin: 0;
+  padding: 40px 0 48px;
+  background-color: var(--light-color);
+}
 
-  /* vertical accent in the column gap */
-  main > .section:nth-of-type(2) h2::after {
-    content: '';
-    position: absolute;
-    top: 8px;
-    right: -36px;
-    bottom: 8px;
-    width: 3px;
-    background-color: var(--continental-yellow);
-  }
+main > .section.takeaway > .default-content-wrapper {
+  border-left: 3px solid var(--continental-yellow);
+  padding: 4px 0 4px 26px;
+}
 
-  main > .section:nth-of-type(2) p:first-of-type {
-    margin-top: 0;
+main > .section.takeaway h2 {
+  margin: 0 0 14px;
+  font-size: clamp(20px, 1.9vw, 24px);
+}
+
+main > .section.takeaway ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+main > .section.takeaway li {
+  margin-bottom: 8px;
+  color: #5a5a5a;
+  font-size: 16px;
+  line-height: 1.7;
+  break-inside: avoid;
+}
+
+@media (width >= 900px) {
+  main > .section.takeaway ul {
+    columns: 2;
+    column-gap: 46px;
   }
 }
 
@@ -396,6 +533,7 @@ main > .section:last-of-type .default-content-wrapper {
   max-width: 760px;
   text-align: center;
 }
+
 
 main > .section:last-of-type h2 {
   margin-top: 0;

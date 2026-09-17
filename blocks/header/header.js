@@ -109,29 +109,27 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
 }
 
 const ICONS = {
-  globe: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>',
+  tire: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.6"/></svg>',
+  pin: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s6.5-6 6.5-10.5A6.5 6.5 0 0 0 5.5 10.5C5.5 15 12 21 12 21Z"/><circle cx="12" cy="10.3" r="2.4"/></svg>',
   search: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.4 15.4 5.1 5.1"/></svg>',
-  download: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v11m0 0 4.4-4.4M12 14l-4.4-4.4M4 19.5h16"/></svg>',
 };
 
 /**
- * builds the meta row utilities: region, language, search and download cart
+ * builds the meta row utilities: tire finder, dealer finder, market and search
  * @returns {Element} the utilities container
  */
 function buildUtilities() {
   const utilities = document.createElement('div');
   utilities.className = 'nav-utilities';
   utilities.innerHTML = `
-    <a class="nav-market" href="https://www.continental.com/en/location-selector/">
-      ${ICONS.globe}<span>Global</span>
+    <a class="nav-utility" href="https://www.continental-reifen.de/motorrad/reifensuche">
+      ${ICONS.tire}<span>Finden Sie Ihren Reifen</span>
     </a>
-    <button class="nav-language" type="button" aria-label="Language: English" aria-expanded="false">EN</button>
-    <form class="nav-search" role="search">
-      <input type="search" name="q" placeholder="Search" aria-label="Search">
-      <button class="nav-search-submit" type="submit" aria-label="Search">${ICONS.search}</button>
-    </form>
-    <button class="nav-downloads" type="button" aria-label="Download cart">${ICONS.download}</button>`;
-  utilities.querySelector('.nav-search').addEventListener('submit', (e) => e.preventDefault());
+    <a class="nav-utility" href="https://www.continental-reifen.de/motorrad/haendlersuche">
+      ${ICONS.pin}<span>Händler finden</span>
+    </a>
+    <button class="nav-market" type="button" aria-label="Region: Germany" aria-expanded="false">Germany</button>
+    <button class="nav-search-submit" type="button" aria-label="Search">${ICONS.search}</button>`;
   return utilities;
 }
 

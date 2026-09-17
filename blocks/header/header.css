@@ -89,106 +89,68 @@ header .nav-utilities {
   color: #6b6b6b;
 }
 
-header .nav-market,
-header .nav-language {
+header .nav-utility,
+header .nav-market {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   margin: 0;
   border: 0;
   border-radius: 0;
-  padding: 0 4px;
+  padding: 0 2px;
   background: none;
-  color: #6b6b6b;
-  font-size: 15px;
-  font-weight: 600;
+  color: #2a2a2a;
+  font-size: 13px;
+  font-weight: 500;
   line-height: 1;
   white-space: nowrap;
   cursor: pointer;
 }
 
-header .nav-market:hover,
-header .nav-language:hover {
-  color: var(--text-color);
+header .nav-utility:any-link {
+  color: #2a2a2a;
+}
+
+header .nav-utility:hover,
+header .nav-market:hover {
+  color: #000;
   text-decoration: none;
 }
 
 header .nav-utilities svg {
-  width: 17px;
-  height: 17px;
+  width: 15px;
+  height: 15px;
   fill: none;
   stroke: currentcolor;
   stroke-width: 1.7;
   stroke-linecap: round;
 }
 
-header .nav-language::after {
+header .nav-market::after {
   content: '';
-  width: 6px;
-  height: 6px;
-  border: solid currentcolor;
-  border-width: 0 1.7px 1.7px 0;
+  width: 5px;
+  height: 5px;
+  border: solid #8a8a8a;
+  border-width: 0 1.6px 1.6px 0;
   transform: translateY(-2px) rotate(45deg);
 }
 
-header .nav-search {
-  display: none;
-  box-sizing: border-box;
-  align-items: center;
-  gap: 4px;
-  width: clamp(220px, 32vw, 400px);
-  height: 48px;
-  border-radius: 48px;
-  padding: 0 4px 0 22px;
-  background-color: #f0f0f0;
-}
-
-header .nav-search input {
-  flex: 1 1 auto;
-  min-width: 0;
-  border: 0;
-  padding: 0;
-  background: none;
-  color: #6b6b6b;
-  font-size: 15px;
-}
-
-header .nav-search input:focus-visible {
-  outline: none;
-}
-
-header .nav-search input::-webkit-search-cancel-button {
-  display: none;
-}
-
-header .nav-search-submit,
-header .nav-downloads {
+header .nav-search-submit {
   display: grid;
   flex: 0 0 auto;
   place-items: center;
+  width: 24px;
+  height: 24px;
   margin: 0;
   border: 0;
   padding: 0;
-  background-color: var(--continental-yellow);
-  color: #000;
+  background: none;
+  color: #2a2a2a;
   cursor: pointer;
 }
 
-header .nav-search-submit {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-header .nav-downloads {
-  width: 40px;
-  height: 40px;
-  border-radius: 3px;
-}
-
-header .nav-search-submit:hover,
-header .nav-downloads:hover {
-  background-color: #e6940a;
+header .nav-search-submit:hover {
+  color: #000;
 }
 
 /* hamburger */
@@ -307,26 +269,8 @@ header nav .nav-sections ul > li > ul > li {
     font-size: 16px;
   }
 
-  header .nav-market,
-  header .nav-language,
-  header .nav-downloads {
-    display: none;
-  }
-
-  header .nav-search-submit {
-    background: none;
-    color: #111;
-  }
-
-  header .nav-search {
-    display: flex;
-    width: auto;
-    height: auto;
-    padding: 0;
-    background: none;
-  }
-
-  header .nav-search input {
+  header .nav-utility span,
+  header .nav-market {
     display: none;
   }
 }
@@ -352,7 +296,7 @@ header nav .nav-sections ul > li > ul > li {
 
   /* the yellow logo block overhangs the header, as on continental.com */
   header .nav-brand {
-    width: 255px;
+    width: 168px;
   }
 
   header .nav-brand-link {
@@ -360,22 +304,18 @@ header nav .nav-sections ul > li > ul > li {
     top: 0;
     left: 32px;
     z-index: 2;
-    gap: 7px;
-    width: 255px;
-    height: 160px;
-    padding: 0 24px 24px;
+    gap: 5px;
+    width: 168px;
+    height: 100px;
+    padding: 0 16px 14px;
   }
 
   header .nav-brand-claim {
-    font-size: 13px;
-  }
-
-  header .nav-search {
-    display: flex;
+    font-size: 9.5px;
   }
 
   header .nav-utilities {
-    gap: 14px;
+    gap: 24px;
   }
 
   /* main navigation row */
@@ -386,7 +326,7 @@ header nav .nav-sections ul > li > ul > li {
   header .nav-main-inner {
     display: flex;
     justify-content: flex-end;
-    padding-left: 287px;
+    padding-left: 200px;
     height: var(--nav-main-height);
   }
 

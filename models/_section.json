@@ -33,6 +33,26 @@
             {
               "name": "Highlight",
               "value": "highlight"
+            },
+            {
+              "name": "Breadcrumb",
+              "value": "breadcrumb"
+            },
+            {
+              "name": "Intro",
+              "value": "intro"
+            },
+            {
+              "name": "Comparison table",
+              "value": "specs"
+            },
+            {
+              "name": "Key takeaways",
+              "value": "takeaway"
+            },
+            {
+              "name": "FAQ",
+              "value": "faq"
             }
           ]
         }

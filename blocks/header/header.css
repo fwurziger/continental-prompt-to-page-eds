@@ -76,6 +76,7 @@ header .nav-brand-claim {
   font-size: 9px;
   font-weight: 500;
   letter-spacing: 0.005em;
+  text-align: center;
   white-space: nowrap;
 }
 

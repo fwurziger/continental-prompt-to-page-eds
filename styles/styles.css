@@ -335,7 +335,6 @@ main .section.highlight {
 main > .section:nth-of-type(2) {
   margin: 0;
   padding: 64px 0;
-  background-color: var(--light-color);
 }
 
 main > .section:nth-of-type(2) h2 {
@@ -370,6 +369,7 @@ main > .section:nth-of-type(2) p:first-of-type {
   main > .section:nth-of-type(2) h2 {
     position: relative;
     grid-row: 1 / span 2;
+    align-self: stretch;
   }
 
   /* vertical accent in the column gap */

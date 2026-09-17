@@ -1,5 +1,6 @@
 footer {
-  background-color: var(--light-color);
+  background-color: #1d1d1d;
+  color: #fff;
   font-size: var(--body-font-size-xs);
 }
 
@@ -11,6 +12,14 @@ footer .footer > div {
 
 footer .footer p {
   margin: 0;
+}
+
+footer .footer p + p {
+  margin-top: 12px;
+}
+
+footer .footer a:any-link {
+  color: var(--continental-yellow);
 }
 
 @media (width >= 900px) {

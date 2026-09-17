@@ -4,16 +4,23 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  gap: 20px;
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
+  border: 0;
   background-color: var(--background-color);
+  box-shadow: 0 2px 12px rgb(0 0 0 / 8%);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.cards > ul > li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 14%);
 }
 
 .cards .cards-card-body {
-  margin: 16px;
+  margin: 20px;
 }
 
 .cards .cards-card-image {
@@ -24,4 +31,11 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+}
+
+.cards .cards-card-body strong {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--heading-font-family);
+  font-size: 24px;
 }

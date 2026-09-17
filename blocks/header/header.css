@@ -23,13 +23,16 @@ header nav a:any-link {
 }
 
 /* rows */
+
+/* 1160px of content plus the gutters, so the header sits on the same text edge
+   as `main > .section > div`, which measures its 1160px as a content box. */
 header .nav-meta-inner,
 header .nav-main-inner {
   box-sizing: border-box;
   position: relative;
   margin: 0 auto;
-  max-width: 1160px;
-  padding: 0 20px;
+  max-width: 1208px;
+  padding: 0 24px;
 }
 
 header .nav-meta-inner {
@@ -282,6 +285,7 @@ header nav .nav-sections ul > li > ul > li {
 
   header .nav-meta-inner,
   header .nav-main-inner {
+    max-width: 1224px;
     padding: 0 32px;
   }
 
@@ -299,6 +303,8 @@ header nav .nav-sections ul > li > ul > li {
     width: 168px;
   }
 
+  /* taller than the 102px header, so the block hangs into the hero below it
+     while the wordmark stays above the header edge */
   header .nav-brand-link {
     position: absolute;
     top: 0;
@@ -306,8 +312,8 @@ header nav .nav-sections ul > li > ul > li {
     z-index: 2;
     gap: 5px;
     width: 168px;
-    height: 100px;
-    padding: 0 16px 14px;
+    height: 116px;
+    padding: 0 16px 20px;
   }
 
   header .nav-brand-claim {

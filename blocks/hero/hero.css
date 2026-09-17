@@ -3,10 +3,15 @@
   padding: 0;
 }
 
+/* `width: 100%` is load bearing: with an auto width, `max-height` clamps the
+   height and the aspect ratio transfers back to the width, which leaves the
+   banner narrower than the viewport. */
 .hero {
+  box-sizing: border-box;
   position: relative;
   display: flex;
   align-items: flex-end;
+  width: 100%;
   padding: 64px 0 40px;
   min-height: 340px;
   aspect-ratio: 2.35;
@@ -19,9 +24,8 @@
   min-width: 0;
 }
 
+/* same box as `main > .section > div`, so the copy starts on the page's text edge */
 .hero > div:last-child > div {
-  box-sizing: border-box;
-  width: 100%;
   max-width: 1160px;
   margin: 0 auto;
   padding: 0 24px;
@@ -95,5 +99,9 @@
     padding: 80px 0 52px;
     min-height: 420px;
     max-height: 620px;
+  }
+
+  .hero > div:last-child > div {
+    padding: 0 32px;
   }
 }

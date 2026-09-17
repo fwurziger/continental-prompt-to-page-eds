@@ -1,9 +1,11 @@
-# Your Project's Title...
-Your project's description...
+# Continental Prompt-to-Page EDS
+Edge Delivery Services frontend for the Continental Motorradreifen
+Prompt-to-Page POC. Content is authored in AEM Sites with Universal Editor.
 
 ## Environments
-- Preview: https://main--{repo}--{owner}.aem.page/
-- Live: https://main--{repo}--{owner}.aem.live/
+- AEM Author: https://author-p24706-e491522.adobeaemcloud.com/
+- Preview: https://main--continental-prompt-to-page-eds--fwurziger.aem.page/
+- Live: https://main--continental-prompt-to-page-eds--fwurziger.aem.live/
 
 ## Documentation
 

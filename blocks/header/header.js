@@ -134,7 +134,8 @@ export default async function decorate(block) {
   const brandLink = navBrand.querySelector('.button');
   if (brandLink) {
     brandLink.className = '';
-    brandLink.closest('.button-container').className = '';
+    const brandContainer = brandLink.closest('.button-container') || brandLink.closest('p');
+    if (brandContainer) brandContainer.className = '';
     brandLink.textContent = '';
     const logo = document.createElement('img');
     logo.src = '/icons/continental-logo.svg';

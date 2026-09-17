@@ -108,6 +108,33 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   }
 }
 
+const ICONS = {
+  globe: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>',
+  search: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.4 15.4 5.1 5.1"/></svg>',
+  download: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v11m0 0 4.4-4.4M12 14l-4.4-4.4M4 19.5h16"/></svg>',
+};
+
+/**
+ * builds the meta row utilities: region, language, search and download cart
+ * @returns {Element} the utilities container
+ */
+function buildUtilities() {
+  const utilities = document.createElement('div');
+  utilities.className = 'nav-utilities';
+  utilities.innerHTML = `
+    <a class="nav-market" href="https://www.continental.com/en/location-selector/">
+      ${ICONS.globe}<span>Global</span>
+    </a>
+    <button class="nav-language" type="button" aria-label="Language: English" aria-expanded="false">EN</button>
+    <form class="nav-search" role="search">
+      <input type="search" name="q" placeholder="Search" aria-label="Search">
+      <button class="nav-search-submit" type="submit" aria-label="Search">${ICONS.search}</button>
+    </form>
+    <button class="nav-downloads" type="button" aria-label="Download cart">${ICONS.download}</button>`;
+  utilities.querySelector('.nav-search').addEventListener('submit', (e) => e.preventDefault());
+  return utilities;
+}
+
 /**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
@@ -131,23 +158,22 @@ export default async function decorate(block) {
   });
 
   const navBrand = nav.querySelector('.nav-brand');
-  const brandLink = navBrand.querySelector('.button');
+  const brandLink = navBrand && navBrand.querySelector('a');
   if (brandLink) {
-    brandLink.className = '';
+    brandLink.className = 'nav-brand-link';
     const brandContainer = brandLink.closest('.button-container') || brandLink.closest('p');
-    if (brandContainer) brandContainer.className = '';
-    brandLink.textContent = '';
-    const logo = document.createElement('img');
-    logo.src = '/icons/continental-logo.svg';
-    logo.alt = 'Continental';
-    logo.width = 174;
-    logo.height = 32;
-    brandLink.append(logo);
+    if (brandContainer) brandContainer.className = 'nav-brand-wrapper';
+    brandLink.setAttribute('aria-label', 'Continental');
+    brandLink.innerHTML = `
+      <img src="/icons/continental-logo.svg" alt="Continental" width="207" height="38">
+      <span class="nav-brand-claim">The Future in Motion</span>`;
   }
 
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
+      navSection.classList.add('nav-section');
+      navSection.querySelectorAll(':scope > ul > li').forEach((sub) => sub.classList.add('nav-subsection'));
       if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
       navSection.addEventListener('click', () => {
         if (isDesktop.matches) {
@@ -159,19 +185,6 @@ export default async function decorate(block) {
     });
   }
 
-  const navTools = nav.querySelector('.nav-tools');
-  if (navTools) {
-    const utilities = document.createElement('div');
-    utilities.className = 'nav-utilities';
-    utilities.innerHTML = `
-      <a class="nav-market" href="https://www.continental.com/en/location-selector/" aria-label="Choose country or region">
-        <span aria-hidden="true">●</span> Global
-      </a>
-      <span class="nav-language" aria-label="Language: English">EN</span>
-    `;
-    navTools.prepend(utilities);
-  }
-
   // hamburger for mobile
   const hamburger = document.createElement('div');
   hamburger.classList.add('nav-hamburger');
@@ -179,7 +192,26 @@ export default async function decorate(block) {
       <span class="nav-hamburger-icon"></span>
     </button>`;
   hamburger.addEventListener('click', () => toggleMenu(nav, navSections));
-  nav.prepend(hamburger);
+
+  // meta row (logo, region, language, search) above the main navigation row
+  const metaInner = document.createElement('div');
+  metaInner.className = 'nav-meta-inner';
+  metaInner.append(hamburger);
+  if (navBrand) metaInner.append(navBrand);
+  metaInner.append(buildUtilities());
+  const metaRow = document.createElement('div');
+  metaRow.className = 'nav-meta';
+  metaRow.append(metaInner);
+
+  const mainInner = document.createElement('div');
+  mainInner.className = 'nav-main-inner';
+  if (navSections) mainInner.append(navSections);
+  const mainRow = document.createElement('div');
+  mainRow.className = 'nav-main';
+  mainRow.append(mainInner);
+
+  nav.textContent = '';
+  nav.append(metaRow, mainRow);
   nav.setAttribute('aria-expanded', 'false');
   // prevent mobile nav behavior on window resize
   toggleMenu(nav, navSections, isDesktop.matches);

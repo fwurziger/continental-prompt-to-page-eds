@@ -18,7 +18,7 @@
   --text-color: #111;
   --link-color: #d97700;
   --link-hover-color: #9b5400;
-  --continental-yellow: #ffb900;
+  --continental-yellow: #ffa500;
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
@@ -37,8 +37,10 @@
   --heading-font-size-s: 24px;
   --heading-font-size-xs: 22px;
 
-  /* nav height */
-  --nav-height: 72px;
+  /* nav height: meta row + main navigation row */
+  --nav-meta-height: 64px;
+  --nav-main-height: 0px;
+  --nav-height: var(--nav-meta-height);
 }
 
 /* fallback fonts */
@@ -56,7 +58,9 @@
 
 @media (width >= 900px) {
   :root {
-    --nav-height: 88px;
+    --nav-meta-height: 84px;
+    --nav-main-height: 49px;
+    --nav-height: calc(var(--nav-meta-height) + var(--nav-main-height));
 
     /* body sizes */
     --body-font-size-m: 18px;

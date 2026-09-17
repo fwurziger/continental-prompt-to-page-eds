@@ -331,10 +331,15 @@ main .section.highlight {
   padding: 64px 0;
 }
 
+/* the hero sits flush against the breadcrumb, without the default section gap */
+main > .section.hero-container {
+  margin-bottom: 0;
+}
+
 /* breadcrumb trail below the hero */
 main > .section.breadcrumb {
   margin: 0;
-  padding: 18px 0 22px;
+  padding: 12px 0 14px;
 }
 
 main > .section.breadcrumb p {
@@ -393,10 +398,10 @@ main > .section.specs tbody tr:last-child td {
   border-bottom: 0;
 }
 
-/* generated pages end on a left aligned FAQ, not a centered closing statement */
-main > .section.faq .default-content-wrapper {
-  max-width: none;
-  text-align: left;
+/* generated pages end on a left aligned FAQ, so it keeps the normal content width
+   and needs its own breathing room above the footer */
+main > .section.faq {
+  padding-bottom: 64px;
 }
 
 main > .section.faq h2 {
@@ -431,7 +436,7 @@ main > .section.specs > .default-content-wrapper > p {
 main > .section.intro {
   margin: 0;
   padding: 44px 0 52px;
-  background-color: var(--light-color);
+  background-color: var(--background-color);
 }
 
 main > .section.intro h2 {
@@ -529,7 +534,8 @@ main > .section:last-of-type {
   margin-bottom: 0;
 }
 
-main > .section:last-of-type .default-content-wrapper {
+/* the narrow centered closing statement is a homepage pattern, not a FAQ one */
+main > .section:last-of-type:not(.faq) .default-content-wrapper {
   max-width: 760px;
   text-align: center;
 }

@@ -123,12 +123,12 @@ function buildUtilities() {
   utilities.className = 'nav-utilities';
   utilities.innerHTML = `
     <a class="nav-utility" href="https://www.continental-reifen.de/motorrad/reifensuche">
-      ${ICONS.tire}<span>Finden Sie Ihren Reifen</span>
+      ${ICONS.tire}<span>Find your tyre</span>
     </a>
     <a class="nav-utility" href="https://www.continental-reifen.de/motorrad/haendlersuche">
-      ${ICONS.pin}<span>Händler finden</span>
+      ${ICONS.pin}<span>Find a dealer</span>
     </a>
-    <button class="nav-market" type="button" aria-label="Region: Germany" aria-expanded="false">Germany</button>
+    <button class="nav-market" type="button" aria-label="Region: United Kingdom" aria-expanded="false">United Kingdom</button>
     <button class="nav-search-submit" type="button" aria-label="Search">${ICONS.search}</button>`;
   return utilities;
 }

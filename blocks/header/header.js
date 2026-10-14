@@ -142,7 +142,7 @@ export default async function decorate(block) {
   if (isOutdoorPage()) {
     block.innerHTML = `<nav class="outdoor-nav" aria-label="Main navigation">
       <a class="outdoor-brand" href="/outdoor"><strong>OUTDOOR</strong><small>Ride further. All year.</small></a>
-      <div class="outdoor-links"><a href="#">Ride</a><a href="#">Wear</a><a href="#">Carry</a><a href="#">Learn</a></div>
+      <div class="outdoor-links"><a href="/outdoor#ride">Ride</a><a href="/outdoor#wear">Wear</a><a href="/outdoor#carry">Carry</a><a href="/outdoor#learn">Learn</a></div>
       <span class="outdoor-market">United Kingdom</span>
     </nav>`;
     return;

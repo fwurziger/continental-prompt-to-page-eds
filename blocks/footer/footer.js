@@ -9,7 +9,7 @@ export default async function decorate(block) {
   if (/^\/outdoor(\/|$)|winter-mountain-bik/i.test(window.location.pathname)) {
     block.innerHTML = `<div class="outdoor-footer">
       <strong>OUTDOOR</strong>
-      <span>Winter riding guide · White-label demo</span>
+      <span>Gear and guides for riders · White-label demo</span>
     </div>`;
     return;
   }

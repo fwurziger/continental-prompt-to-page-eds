@@ -6,7 +6,7 @@ import { loadFragment } from '../fragment/fragment.js';
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  if (/winter-mountain-bik/i.test(window.location.pathname)) {
+  if (/^\/outdoor(\/|$)|winter-mountain-bik/i.test(window.location.pathname)) {
     block.innerHTML = `<div class="outdoor-footer">
       <strong>OUTDOOR</strong>
       <span>Winter riding guide · White-label demo</span>

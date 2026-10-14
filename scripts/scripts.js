@@ -189,7 +189,7 @@ export function decorateMain(main) {
  */
 async function loadEager(doc) {
   document.documentElement.lang = 'en';
-  if (/winter-mountain-bik/i.test(window.location.pathname)) {
+  if (/^\/outdoor(\/|$)|winter-mountain-bik/i.test(window.location.pathname)) {
     document.body.classList.add('outdoor-theme');
   }
   decorateTemplateAndTheme();

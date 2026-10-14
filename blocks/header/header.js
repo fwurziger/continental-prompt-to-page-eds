@@ -3,7 +3,7 @@ import { loadFragment } from '../fragment/fragment.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
-const isOutdoorPage = () => /winter-mountain-bik/i.test(window.location.pathname);
+const isOutdoorPage = () => /^\/outdoor(\/|$)|winter-mountain-bik/i.test(window.location.pathname);
 
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
@@ -141,7 +141,7 @@ function buildUtilities() {
 export default async function decorate(block) {
   if (isOutdoorPage()) {
     block.innerHTML = `<nav class="outdoor-nav" aria-label="Main navigation">
-      <a class="outdoor-brand" href="/"><strong>OUTDOOR</strong><small>Ride further. All year.</small></a>
+      <a class="outdoor-brand" href="/outdoor"><strong>OUTDOOR</strong><small>Ride further. All year.</small></a>
       <div class="outdoor-links"><a href="#">Ride</a><a href="#">Wear</a><a href="#">Carry</a><a href="#">Learn</a></div>
       <span class="outdoor-market">United Kingdom</span>
     </nav>`;

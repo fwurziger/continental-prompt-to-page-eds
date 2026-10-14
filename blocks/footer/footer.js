@@ -6,6 +6,14 @@ import { loadFragment } from '../fragment/fragment.js';
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
+  if (/winter-mountain-bik/i.test(window.location.pathname)) {
+    block.innerHTML = `<div class="outdoor-footer">
+      <strong>OUTDOOR</strong>
+      <span>Winter riding guide · White-label demo</span>
+    </div>`;
+    return;
+  }
+
   // load footer as fragment
   const footerMeta = getMetadata('footer');
   const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';

@@ -28,6 +28,22 @@ footer .footer a:any-link {
   color: var(--continental-yellow);
 }
 
+footer .outdoor-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #173f35;
+}
+
+footer .footer .outdoor-footer strong {
+  color: #fff;
+  letter-spacing: 0.15em;
+}
+
+footer .outdoor-footer span {
+  color: #cfe0d9;
+}
+
 @media (width >= 900px) {
   footer .footer > div {
     padding: 56px 32px 40px;

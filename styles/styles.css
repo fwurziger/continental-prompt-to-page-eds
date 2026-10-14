@@ -91,6 +91,12 @@ body.appear {
   display: block;
 }
 
+body.outdoor-theme {
+  --link-color: #416b18;
+  --link-hover-color: #27460a;
+  --continental-yellow: #b8d43f;
+}
+
 header {
   height: var(--nav-height);
 }

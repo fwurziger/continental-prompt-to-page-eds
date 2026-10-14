@@ -22,6 +22,52 @@ header nav a:any-link {
   text-decoration: none;
 }
 
+header .outdoor-nav {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  height: var(--nav-height);
+  margin: 0 auto;
+  max-width: 1224px;
+  padding: 0 32px;
+  background: #f7f7f2;
+  color: #173f35;
+}
+
+header .outdoor-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  color: #173f35;
+}
+
+header .outdoor-brand strong {
+  font-size: 18px;
+  letter-spacing: 0.15em;
+}
+
+header .outdoor-brand small {
+  color: #577168;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+header .outdoor-links {
+  display: flex;
+  gap: 28px;
+  margin-left: auto;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+header .outdoor-market {
+  border-left: 1px solid #cad4ce;
+  padding-left: 24px;
+  color: #577168;
+  font-size: 13px;
+}
+
 /* rows */
 
 /* 1160px of content plus the gutters, so the header sits on the same text edge

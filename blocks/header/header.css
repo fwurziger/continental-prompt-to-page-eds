@@ -462,3 +462,128 @@ header nav .nav-sections ul > li > ul > li {
     right: 0;
   }
 }
+
+/* Reply brand header */
+header nav.reply-nav {
+  position: relative;
+  height: var(--nav-height);
+  border-bottom: 1px solid #e6e8ea;
+  background: #fff;
+  color: #151f27;
+}
+
+header nav.reply-nav a.reply-lang {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 3px 22px 4px;
+  background: #151f27;
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+header nav.reply-nav .reply-bar {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  height: 100%;
+  max-width: 1224px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+header nav.reply-nav .reply-brand {
+  display: flex;
+  flex: none;
+}
+
+header nav.reply-nav .reply-brand img {
+  display: block;
+  width: auto;
+  height: 52px;
+  margin-left: -6px;
+}
+
+header nav.reply-nav .reply-menu {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  margin: 0 0 0 auto;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+}
+
+header nav.reply-nav .reply-menu ul {
+  position: absolute;
+  top: 100%;
+  left: -24px;
+  display: none;
+  min-width: 280px;
+  margin: 0;
+  padding: 16px 24px;
+  border-top: 3px solid #02d34a;
+  background: #fff;
+  box-shadow: 0 12px 28px rgb(21 31 39 / 12%);
+  list-style: none;
+}
+
+header nav.reply-nav .reply-menu ul a {
+  display: block;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+header nav.reply-nav .reply-menu > li {
+  position: relative;
+}
+
+header nav.reply-nav .reply-menu > li > a,
+header nav.reply-nav .reply-menu > li > button {
+  display: block;
+  padding: 28px 0;
+  border: 0;
+  background: none;
+  color: #151f27;
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+}
+
+header nav.reply-nav .reply-menu a:hover,
+header nav.reply-nav .reply-menu > li > button:hover {
+  color: #00a33a;
+}
+
+header nav.reply-nav .reply-drop:hover > ul,
+header nav.reply-nav .reply-drop:focus-within > ul,
+header nav.reply-nav .reply-drop > button[aria-expanded="true"] + ul {
+  display: block;
+}
+
+header nav.reply-nav .reply-search {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  color: #151f27;
+}
+
+header nav.reply-nav .reply-search svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentcolor;
+  stroke-width: 2;
+}
+
+@media (width < 1100px) {
+  header nav.reply-nav .reply-menu {
+    display: none;
+  }
+
+  header nav.reply-nav .reply-search {
+    margin-left: auto;
+  }
+}

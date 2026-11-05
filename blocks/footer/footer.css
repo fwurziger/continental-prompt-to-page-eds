@@ -28,6 +28,62 @@ footer .footer a:any-link {
   color: var(--continental-yellow);
 }
 
+footer .footer > .reply-footer {
+  max-width: none;
+  margin: 0;
+  padding: 56px max(32px, calc((100% - 1160px) / 2)) 32px;
+  background: #151f27;
+  color: #c7ccd1;
+  font-size: 14px;
+}
+
+footer .reply-footer-brand img {
+  display: block;
+  height: 56px;
+  width: auto;
+  margin-left: -6px;
+}
+
+footer .reply-footer-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  margin: 32px 0;
+}
+
+footer .footer .reply-footer h3 {
+  margin: 0 0 12px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+footer .reply-footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+footer .reply-footer li {
+  margin: 0 0 8px;
+}
+
+footer .footer .reply-footer a:any-link {
+  color: #c7ccd1;
+}
+
+footer .footer .reply-footer a:hover {
+  color: #02d34a;
+}
+
+footer .reply-footer-note {
+  margin: 0;
+  padding-top: 20px;
+  border-top: 1px solid #2b3742;
+  color: #8a949d;
+  font-size: 12px;
+}
+
 footer .outdoor-footer {
   display: flex;
   align-items: center;

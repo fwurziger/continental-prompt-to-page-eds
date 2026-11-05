@@ -4,6 +4,76 @@ import { loadFragment } from '../fragment/fragment.js';
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
 const isOutdoorPage = () => /^\/outdoor(\/|$)|winter-mountain-bik/i.test(window.location.pathname);
+const isReplyPage = () => /^\/reply(\/|$)/i.test(window.location.pathname);
+
+const ICONS = {
+  tire: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.6"/></svg>',
+  pin: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s6.5-6 6.5-10.5A6.5 6.5 0 0 0 5.5 10.5C5.5 15 12 21 12 21Z"/><circle cx="12" cy="10.3" r="2.4"/></svg>',
+  search: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.4 15.4 5.1 5.1"/></svg>',
+};
+
+const REPLY = 'https://www.reply.com';
+
+// Mirrors the main navigation on reply.com/it, entries and targets included.
+const REPLY_MENU = [
+  ['Services', null, [
+    ['Artificial Intelligence', '/it/artificial-intelligence'],
+    ['AI-powered Software Engineering', '/it/ai-powered-software-engineering'],
+    ['Cloud Computing', '/it/cloud-computing'],
+    ['CX & Digital Commerce', '/it/cx-and-digital-commerce'],
+    ['Cybersecurity', '/it/cybersecurity'],
+    ['Data World', '/it/data-world'],
+    ['Digital Experience', '/it/digital-experience'],
+    ['Strategy and Business Model Transformation', '/it/strategy-and-business-model-transformation'],
+  ]],
+  ['Industries', null, [
+    ['Automotive & Manufacturing', '/it/automotive-and-manufacturing'],
+    ['Energy & Utilities', '/it/energy-and-utilities'],
+    ['Financial Services', '/it/financial-services'],
+    ['Healthcare', '/it/healthcare'],
+    ['Logistics', '/it/logistics'],
+    ['Retail & Consumer Products', '/it/retail-and-consumer-products'],
+    ['Telco & Media', '/it/telco-and-media'],
+  ]],
+  ['Insights & Labs', null, [
+    ['Labs', '/it/labs'],
+    ['Insights', '/it/insights'],
+    ['Xchange', '/it/xchange'],
+  ]],
+  ['ROSE', 'https://onlineservices.reply.com'],
+  ['We care', null, [
+    ['Making a difference', '/it/esg'],
+    ['Environment', '/it/environment'],
+    ['Social', '/it/social'],
+    ['Governance', '/it/governance'],
+  ]],
+  ['We are', null, [
+    ['Company profile', '/it/company-profile'],
+    ['Offices', '/it/offices'],
+    ['Contacts', '/it/contacts'],
+    ['Newsroom', '/it/newsroom'],
+    ['Investors', '/it/investors'],
+  ]],
+  ['Join us', `${REPLY}/it/about/careers/`],
+];
+
+const replyHref = (path) => (path.startsWith('http') ? path : `${REPLY}${path}`);
+
+function buildReplyNav() {
+  const items = REPLY_MENU.map(([label, href, children]) => {
+    if (!children) return `<li><a href="${replyHref(href)}">${label}</a></li>`;
+    const links = children.map(([text, path]) => `<li><a href="${replyHref(path)}">${text}</a></li>`).join('');
+    return `<li class="reply-drop"><button type="button" aria-expanded="false">${label}</button><ul>${links}</ul></li>`;
+  }).join('');
+  return `<nav class="reply-nav" aria-label="Main navigation">
+      <a class="reply-lang" href="${REPLY}/it" aria-label="Lingua: italiano">IT</a>
+      <div class="reply-bar">
+        <a class="reply-brand" href="${REPLY}/it" aria-label="Reply"><img src="/icons/reply-logo.svg" alt="Reply" width="129" height="64"></a>
+        <ul class="reply-menu">${items}</ul>
+        <a class="reply-search" href="${REPLY}/it/search" aria-label="Cerca">${ICONS.search}</a>
+      </div>
+    </nav>`;
+}
 
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
@@ -109,12 +179,6 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   }
 }
 
-const ICONS = {
-  tire: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.6"/></svg>',
-  pin: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s6.5-6 6.5-10.5A6.5 6.5 0 0 0 5.5 10.5C5.5 15 12 21 12 21Z"/><circle cx="12" cy="10.3" r="2.4"/></svg>',
-  search: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.4 15.4 5.1 5.1"/></svg>',
-};
-
 /**
  * builds the meta row utilities: tire finder, dealer finder, market and search
  * @returns {Element} the utilities container
@@ -145,6 +209,18 @@ export default async function decorate(block) {
       <div class="outdoor-links"><a href="/outdoor#ride">Ride</a><a href="/outdoor#wear">Wear</a><a href="/outdoor#carry">Carry</a><a href="/outdoor#learn">Learn</a></div>
       <span class="outdoor-market">United Kingdom</span>
     </nav>`;
+    return;
+  }
+
+  if (isReplyPage()) {
+    block.innerHTML = buildReplyNav();
+    block.querySelectorAll('.reply-drop > button').forEach((button) => {
+      button.addEventListener('click', () => {
+        const open = button.getAttribute('aria-expanded') === 'true';
+        block.querySelectorAll('.reply-drop > button').forEach((other) => other.setAttribute('aria-expanded', 'false'));
+        button.setAttribute('aria-expanded', open ? 'false' : 'true');
+      });
+    });
     return;
   }
 

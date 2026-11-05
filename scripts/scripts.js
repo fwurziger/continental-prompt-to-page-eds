@@ -192,6 +192,10 @@ async function loadEager(doc) {
   if (/^\/outdoor(\/|$)|winter-mountain-bik/i.test(window.location.pathname)) {
     document.body.classList.add('outdoor-theme');
   }
+  if (/^\/reply(\/|$)/i.test(window.location.pathname)) {
+    document.documentElement.lang = 'it';
+    document.body.classList.add('reply-theme');
+  }
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {

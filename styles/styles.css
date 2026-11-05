@@ -97,6 +97,20 @@ body.outdoor-theme {
   --continental-yellow: #b8d43f;
 }
 
+/* Reply brand: ink #151f27 and the green of the Reply runner. */
+body.reply-theme {
+  --text-color: #151f27;
+  --dark-color: #151f27;
+  --link-color: #00a33a;
+  --link-hover-color: #151f27;
+  --continental-yellow: #02d34a;
+  --body-font-family: 'Helvetica Neue', helvetica, arial, sans-serif;
+  --heading-font-family: 'Helvetica Neue', helvetica, arial, sans-serif;
+  --nav-meta-height: 76px;
+  --nav-main-height: 0px;
+  --nav-height: 76px;
+}
+
 header {
   height: var(--nav-height);
 }

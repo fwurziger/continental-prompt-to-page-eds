@@ -195,6 +195,12 @@ async function loadEager(doc) {
   if (/^\/reply(\/|$)/i.test(window.location.pathname)) {
     document.documentElement.lang = 'it';
     document.body.classList.add('reply-theme');
+    document.head.querySelectorAll('link[rel="icon"]').forEach((link) => link.remove());
+    const icon = document.createElement('link');
+    icon.rel = 'icon';
+    icon.type = 'image/svg+xml';
+    icon.href = '/icons/reply-favicon.svg';
+    document.head.append(icon);
   }
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
